@@ -1,0 +1,170 @@
+{
+  "risk_model": {
+    "model": "risk_model",
+    "target": "risk_score",
+    "target_classes": [
+      "High",
+      "Low",
+      "Medium"
+    ],
+    "numeric_features": [
+      "age",
+      "chronic_flag",
+      "length_of_stay_hours",
+      "visit_month",
+      "visit_quarter",
+      "is_weekend",
+      "days_since_registration",
+      "visit_frequency",
+      "avg_los_per_patient",
+      "outlier_los",
+      "dept_avg_billed"
+    ],
+    "categorical_features": [
+      "visit_type",
+      "department"
+    ],
+    "encoded_features": [
+      "visit_type_enc",
+      "department_enc"
+    ],
+    "all_features": [
+      "age",
+      "chronic_flag",
+      "length_of_stay_hours",
+      "visit_month",
+      "visit_quarter",
+      "is_weekend",
+      "days_since_registration",
+      "visit_frequency",
+      "avg_los_per_patient",
+      "outlier_los",
+      "dept_avg_billed",
+      "visit_type_enc",
+      "department_enc"
+    ],
+    "categorical_encodings": {
+      "visit_type": [
+        "ER",
+        "ICU",
+        "OPD"
+      ],
+      "department": [
+        "Cardiology",
+        "ER",
+        "General",
+        "ICU",
+        "Neurology",
+        "Orthopedics"
+      ]
+    },
+    "split_strategy": "time-based 80/20",
+    "leakage_excluded": [
+      "approved_amount",
+      "claim_status",
+      "billing_lag",
+      "approval_ratio",
+      "billed_amount",
+      "payment_days"
+    ],
+    "best_params": {
+      "max_depth": 10,
+      "min_samples_leaf": 1,
+      "n_estimators": 200
+    }
+  },
+  "claim_model": {
+    "model": "claim_model",
+    "target": "claim_status",
+    "target_classes": [
+      "Paid",
+      "Pending",
+      "Rejected"
+    ],
+    "numeric_features": [
+      "billed_amount",
+      "billed_per_hour",
+      "provider_rejection_rate",
+      "dept_avg_billed",
+      "age",
+      "chronic_flag",
+      "billing_lag",
+      "visit_month",
+      "visit_quarter",
+      "outlier_billed",
+      "length_of_stay_hours",
+      "visit_frequency"
+    ],
+    "categorical_features": [
+      "insurance_provider",
+      "visit_type",
+      "department",
+      "risk_score"
+    ],
+    "encoded_features": [
+      "insurance_provider_enc",
+      "visit_type_enc",
+      "department_enc",
+      "risk_score_enc"
+    ],
+    "all_features": [
+      "billed_amount",
+      "billed_per_hour",
+      "provider_rejection_rate",
+      "dept_avg_billed",
+      "age",
+      "chronic_flag",
+      "billing_lag",
+      "visit_month",
+      "visit_quarter",
+      "outlier_billed",
+      "length_of_stay_hours",
+      "visit_frequency",
+      "insurance_provider_enc",
+      "visit_type_enc",
+      "department_enc",
+      "risk_score_enc"
+    ],
+    "categorical_encodings": {
+      "insurance_provider": [
+        "CareOne",
+        "HealthPlus",
+        "MediCareX",
+        "SecureLife"
+      ],
+      "visit_type": [
+        "ER",
+        "ICU",
+        "OPD"
+      ],
+      "department": [
+        "Cardiology",
+        "ER",
+        "General",
+        "ICU",
+        "Neurology",
+        "Orthopedics"
+      ],
+      "risk_score": [
+        "High",
+        "Low",
+        "Medium"
+      ]
+    },
+    "engineered_features": [
+      "billed_per_hour"
+    ],
+    "split_strategy": "time-based 80/20",
+    "imbalance_strategy": "class_weight=balanced",
+    "leakage_excluded": [
+      "approved_amount",
+      "payment_days",
+      "approval_ratio"
+    ],
+    "best_params": {
+      "learning_rate": 0.1,
+      "max_depth": 5,
+      "n_estimators": 200
+    }
+  }
+}
