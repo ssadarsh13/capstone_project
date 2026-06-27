@@ -1,0 +1,9 @@
+# Monitoring toolkit — pinned to match the model artifacts (avoid unpickle drift).
+pandas==2.2.3
+numpy==2.3.4
+scipy==1.17.1
+scikit-learn==1.8.0
+imbalanced-learn==0.14.2
+joblib==1.5.3
+matplotlib==3.10.0
+pytest==8.3.4

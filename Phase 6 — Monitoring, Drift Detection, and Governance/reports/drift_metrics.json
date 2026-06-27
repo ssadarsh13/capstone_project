@@ -1,0 +1,186 @@
+{
+  "reference_period": "2025-01-20 \u2192 2025-11-08",
+  "current_period": "2025-11-08 \u2192 2026-01-20",
+  "validation": {
+    "n_rows": 5000,
+    "passed": false,
+    "n_issues": 1,
+    "issues": [
+      {
+        "column": "billing_lag",
+        "check": "range",
+        "count": 4491,
+        "detail": "4491 value(s) outside [0, 365]",
+        "examples": [
+          -208,
+          -30,
+          -280
+        ]
+      }
+    ]
+  },
+  "feature_drift": [
+    {
+      "feature": "billing_lag",
+      "kind": "numeric",
+      "psi": 5.4403,
+      "psi_band": "significant",
+      "stat_test": "ks",
+      "statistic": 0.5052,
+      "p_value": 0.0,
+      "drifted": true
+    },
+    {
+      "feature": "days_since_registration",
+      "kind": "numeric",
+      "psi": 4.8326,
+      "psi_band": "significant",
+      "stat_test": "ks",
+      "statistic": 0.4927,
+      "p_value": 0.0,
+      "drifted": true
+    },
+    {
+      "feature": "billed_amount",
+      "kind": "numeric",
+      "psi": 0.003,
+      "psi_band": "stable",
+      "stat_test": "ks",
+      "statistic": 0.0229,
+      "p_value": 0.029669,
+      "drifted": true
+    },
+    {
+      "feature": "age",
+      "kind": "numeric",
+      "psi": 0.0021,
+      "psi_band": "stable",
+      "stat_test": "ks",
+      "statistic": 0.016,
+      "p_value": 0.254717,
+      "drifted": false
+    },
+    {
+      "feature": "length_of_stay_hours",
+      "kind": "numeric",
+      "psi": 0.0021,
+      "psi_band": "stable",
+      "stat_test": "ks",
+      "statistic": 0.0146,
+      "p_value": 0.361965,
+      "drifted": false
+    },
+    {
+      "feature": "department",
+      "kind": "categorical",
+      "psi": 0.002,
+      "psi_band": "stable",
+      "stat_test": "chi2",
+      "statistic": 7.8125,
+      "p_value": 0.166875,
+      "drifted": false
+    },
+    {
+      "feature": "insurance_provider",
+      "kind": "categorical",
+      "psi": 0.0016,
+      "psi_band": "stable",
+      "stat_test": "chi2",
+      "statistic": 6.3658,
+      "p_value": 0.095106,
+      "drifted": false
+    },
+    {
+      "feature": "provider_rejection_rate",
+      "kind": "numeric",
+      "psi": 0.0013,
+      "psi_band": "stable",
+      "stat_test": "ks",
+      "statistic": 0.0172,
+      "p_value": 0.187848,
+      "drifted": false
+    },
+    {
+      "feature": "avg_los_per_patient",
+      "kind": "numeric",
+      "psi": 0.001,
+      "psi_band": "stable",
+      "stat_test": "ks",
+      "statistic": 0.0092,
+      "p_value": 0.884158,
+      "drifted": false
+    },
+    {
+      "feature": "visit_frequency",
+      "kind": "numeric",
+      "psi": 0.0004,
+      "psi_band": "stable",
+      "stat_test": "ks",
+      "statistic": 0.004,
+      "p_value": 1.0,
+      "drifted": false
+    },
+    {
+      "feature": "dept_avg_billed",
+      "kind": "numeric",
+      "psi": 0.0003,
+      "psi_band": "stable",
+      "stat_test": "ks",
+      "statistic": 0.0132,
+      "p_value": 0.48456,
+      "drifted": false
+    },
+    {
+      "feature": "risk_score",
+      "kind": "categorical",
+      "psi": 0.0001,
+      "psi_band": "stable",
+      "stat_test": "chi2",
+      "statistic": 0.4281,
+      "p_value": 0.807306,
+      "drifted": false
+    },
+    {
+      "feature": "visit_type",
+      "kind": "categorical",
+      "psi": 0.0,
+      "psi_band": "stable",
+      "stat_test": "chi2",
+      "statistic": 0.0221,
+      "p_value": 0.988988,
+      "drifted": false
+    },
+    {
+      "feature": "chronic_flag",
+      "kind": "numeric",
+      "psi": 0.0,
+      "psi_band": "stable",
+      "stat_test": "ks",
+      "statistic": 0.0085,
+      "p_value": 0.932324,
+      "drifted": false
+    }
+  ],
+  "prediction_drift": {
+    "risk": {
+      "feature": "risk_prediction",
+      "kind": "categorical",
+      "psi": 0.0691,
+      "psi_band": "stable",
+      "stat_test": "chi2",
+      "statistic": 302.212,
+      "p_value": 0.0,
+      "drifted": true
+    },
+    "claim": {
+      "feature": "claim_prediction",
+      "kind": "categorical",
+      "psi": 0.0036,
+      "psi_band": "stable",
+      "stat_test": "chi2",
+      "statistic": 16.6385,
+      "p_value": 0.000244,
+      "drifted": true
+    }
+  }
+}
