@@ -1,0 +1,17 @@
+{
+  "billed_amount": 42000.0,
+  "provider_rejection_rate": 0.18,
+  "dept_avg_billed": 18500.0,
+  "age": 67,
+  "chronic_flag": 1,
+  "billing_lag": 5,
+  "visit_month": 11,
+  "visit_quarter": 4,
+  "outlier_billed": 0,
+  "length_of_stay_hours": 72.5,
+  "visit_frequency": 5,
+  "insurance_provider": "MediCareX",
+  "visit_type": "ICU",
+  "department": "Cardiology",
+  "risk_score": "High"
+}

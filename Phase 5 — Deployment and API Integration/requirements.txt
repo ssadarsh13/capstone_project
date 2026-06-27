@@ -1,0 +1,14 @@
+# Pinned to the versions the model artifacts were trained/serialized with,
+# to avoid scikit-learn / numpy unpickling mismatches.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+scikit-learn==1.8.0
+imbalanced-learn==0.14.2
+pandas==2.2.3
+numpy==2.3.4
+scipy==1.17.1
+joblib==1.5.3
+# test-only
+httpx==0.28.1
+pytest==8.3.4

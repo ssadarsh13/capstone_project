@@ -1,0 +1,15 @@
+{
+  "age": 67,
+  "chronic_flag": 1,
+  "length_of_stay_hours": 72.5,
+  "visit_month": 11,
+  "visit_quarter": 4,
+  "is_weekend": 0,
+  "days_since_registration": 420,
+  "visit_frequency": 5,
+  "avg_los_per_patient": 40.2,
+  "outlier_los": 0,
+  "dept_avg_billed": 18500.0,
+  "visit_type": "ICU",
+  "department": "Cardiology"
+}
