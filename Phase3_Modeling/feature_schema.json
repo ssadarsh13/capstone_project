@@ -1,6 +1,6 @@
 {
   "risk_model": {
-    "model": "risk_model",
+    "model": "risk_model_v2",
     "target": "risk_score",
     "target_classes": [
       "High",
@@ -18,7 +18,11 @@
       "visit_frequency",
       "avg_los_per_patient",
       "outlier_los",
-      "dept_avg_billed"
+      "dept_avg_billed",
+      "los_x_chronic",
+      "age_x_frequency",
+      "dept_los_ratio",
+      "age_x_chronic"
     ],
     "categorical_features": [
       "visit_type",
@@ -40,6 +44,10 @@
       "avg_los_per_patient",
       "outlier_los",
       "dept_avg_billed",
+      "los_x_chronic",
+      "age_x_frequency",
+      "dept_los_ratio",
+      "age_x_chronic",
       "visit_type_enc",
       "department_enc"
     ],
@@ -58,7 +66,17 @@
         "Orthopedics"
       ]
     },
+    "interaction_features": [
+      "los_x_chronic",
+      "age_x_frequency",
+      "dept_los_ratio",
+      "age_x_chronic"
+    ],
     "split_strategy": "time-based 80/20",
+    "cv_strategy": "TimeSeriesSplit(n_splits=5, gap=200)",
+    "imbalance_strategy": "SMOTE inside CV folds",
+    "overfit_controls": "max_depth=8, min_samples_leaf=15",
+    "threshold_file": "risk_threshold.joblib",
     "leakage_excluded": [
       "approved_amount",
       "claim_status",
@@ -66,15 +84,10 @@
       "approval_ratio",
       "billed_amount",
       "payment_days"
-    ],
-    "best_params": {
-      "max_depth": 10,
-      "min_samples_leaf": 1,
-      "n_estimators": 200
-    }
+    ]
   },
   "claim_model": {
-    "model": "claim_model",
+    "model": "claim_model_v2",
     "target": "claim_status",
     "target_classes": [
       "Paid",
@@ -93,7 +106,11 @@
       "visit_quarter",
       "outlier_billed",
       "length_of_stay_hours",
-      "visit_frequency"
+      "visit_frequency",
+      "bill_vs_dept_avg",
+      "bill_x_provider_rate",
+      "lag_x_amount",
+      "chronic_x_amount"
     ],
     "categorical_features": [
       "insurance_provider",
@@ -120,6 +137,10 @@
       "outlier_billed",
       "length_of_stay_hours",
       "visit_frequency",
+      "bill_vs_dept_avg",
+      "bill_x_provider_rate",
+      "lag_x_amount",
+      "chronic_x_amount",
       "insurance_provider_enc",
       "visit_type_enc",
       "department_enc",
@@ -154,17 +175,21 @@
     "engineered_features": [
       "billed_per_hour"
     ],
+    "interaction_features": [
+      "bill_vs_dept_avg",
+      "bill_x_provider_rate",
+      "lag_x_amount",
+      "chronic_x_amount"
+    ],
     "split_strategy": "time-based 80/20",
-    "imbalance_strategy": "class_weight=balanced",
+    "cv_strategy": "TimeSeriesSplit(n_splits=5, gap=200)",
+    "imbalance_strategy": "SMOTE with targeted sampling_strategy inside CV folds",
+    "overfit_controls": "max_depth=4, min_samples_leaf=20, subsample=0.8",
+    "threshold_file": "claim_threshold.joblib",
     "leakage_excluded": [
       "approved_amount",
       "payment_days",
       "approval_ratio"
-    ],
-    "best_params": {
-      "learning_rate": 0.1,
-      "max_depth": 5,
-      "n_estimators": 200
-    }
+    ]
   }
 }
